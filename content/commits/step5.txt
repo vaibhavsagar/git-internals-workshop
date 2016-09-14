@@ -1,0 +1,25 @@
+No, just a Zaphod Beeblebrox; didn't you hear I come in six packs?
+
+Exercise 1: run `git repack -a -d` and inspect `.git/objects`.
+
+`git` stores every version of every file and every directory listing separately
+up to a threshold where it decides to save space. It does this by compressing
+all objects together in files known as 'packfiles'. Some of the objects are
+not stored as full objects but rather deltas that can be used to reconstruct
+the object given a base object. The packfile format is also used to transfer
+objects over the network (hence the messages you see about 'resolving deltas'
+when doing a `git clone` or a `git fetch`)
+
+Exercise 2: inspect and run `tools/unpack.sh`
+
+`git` can convert between the two representations at will. Implementing this
+conversion in Python is far beyond the scope of this workshop and I won't try
+:)
+
+Finally:
+
+We've covered blob, tree, commit, and tag objects, as well as references. If
+you were to reimplement the reading and writing of these, you would have a
+very powerful git-compatible content-addressable filesystem.
+
+To return to the beginning, `git checkout master`.

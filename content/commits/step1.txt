@@ -1,0 +1,41 @@
+'Tis but a scratch!
+
+You should have gotten a warning about being in a 'detached HEAD' state. This
+means that HEAD is no longer pointing to the most current commit of a branch.
+You can verify this by looking at the contents of `.git\HEAD` but for the
+purposes of this workshop we can safely ignore this warning.
+
+Exercise 1: run `git cat-file -p HEAD`
+
+You should see this same content. `git cat-file -p` is a git 'plumbing' command
+(contrasted to a 'porcelain' command like `git status`, think of a toilet) that
+will take a symbolic ref, a normal ref, or the unambiguous prefix of an object
+reference and pretty print the object content (hence the '-p')
+
+A commit consists of:
+
+1. A tree (representing the root directory of a project)
+2. Some parent commits (the initial commit has no parents and merge commits can
+   have two or more parents, but most commits have one parent)
+3. An author
+4. A committer
+5. A message
+
+Exercise 2: inspect the contents of `tools/show_object.py`
+
+`git` stores its data as zlib-compressed files in the `.git/objects`
+directory as follows:
+1. Get the SHA1 hash of some content.
+2. zlib-compress the content.
+2. Take the first 2 characters of this hash. This is the directory under
+   `.git/objects` where git will store the zlib-compressed content.
+3. The next 38 characters are the filename of the zlib-compressed file.
+
+Exercise 3: run `python3 tools/show_object.py HEAD`
+
+This should be recognisably similar to the output of Exercise 1. With a commit
+it would be simple to `.decode()` the output and get something that looks
+almost exactly like our earlier output but there's a good reason we're not
+doing this which I'll talk about in the next step.
+
+Finally: run `git checkout step2`

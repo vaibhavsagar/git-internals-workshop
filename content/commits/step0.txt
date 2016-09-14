@@ -1,0 +1,18 @@
+You are in a maze of twisty little objects, all alike.
+
+Exercise 1: run `cat .git/HEAD`
+
+HEAD is a 'symbolic ref' that references the latest commit of the current
+branch. It's a pointer to a pointer, which can get a little confusing.
+
+Exercise 2: run `cat .git/refs/heads/master`
+
+This is what HEAD currently points to. It stores an object reference as a SHA1
+hash, which is what `git` uses to keep track of content.
+
+Exercise 3: inspect `tools/resolve_ref.py`
+
+This script resolves both symbolic and regular git refs and returns the SHA1
+hash of an object.
+
+Finally: run `git checkout step1`
