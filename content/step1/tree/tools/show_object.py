@@ -4,10 +4,14 @@ import zlib
 import hashlib
 from sys import argv
 
+from resolve_ref import resolve_ref
 
-def ref_path(ref):
-    dir, rest = ref[:2], ref[2:]
-    return dir + '/' + rest
+
+def sha1_to_path(sha1, directory):
+    prefix = sha1[:2]
+    suffix = sha1[2:]
+    path = '/'.join([directory, 'objects', prefix, suffix])
+    return path
 
 
 def hash(content):
@@ -19,8 +23,8 @@ def decompress(path):
         return zlib.decompress(compressed.read())
 
 if __name__ == "__main__":
-    ref = argv[1]
-    path = ".git/objects/" + ref_path(ref)
+    ref = resolve_ref(argv[1], '.git')
+    path = sha1_to_path(ref, '.git')
     content = decompress(path)
     print(content)
     assert ref == hash(content)

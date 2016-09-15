@@ -2,7 +2,7 @@
 
 You should have gotten a warning about being in a 'detached HEAD' state. This
 means that HEAD is no longer pointing to the most current commit of a branch.
-You can verify this by looking at the contents of `.git\HEAD` but for the
+You can verify this by looking at the contents of `.git/HEAD` but for the
 purposes of this workshop we can safely ignore this warning.
 
 Exercise 1: run `git cat-file -p HEAD`
