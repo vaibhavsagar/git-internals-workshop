@@ -18,6 +18,13 @@ executable git-internals-workshop-build
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
+                     , bytestring
+                     , containers
+                     , utf8-string
+                     , transformers
+                     , directory
+                     , filepath
+                     , duffer
   default-language:    Haskell2010
 
 source-repository head
