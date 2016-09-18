@@ -16,7 +16,8 @@ import Duffer.Porcelain
 
 main :: IO ()
 main = do
-    removeDirectoryRecursive "output"
+    notExisting <- not <$> doesDirectoryExist "output"
+    unless notExisting $ removeDirectoryRecursive "output"
     duffer initRepo
     duffer makeRepo
     return ()
