@@ -3,8 +3,6 @@
 module Main where
 
 import qualified Data.ByteString      as B
-import qualified Data.ByteString.UTF8 as BU
-import qualified Data.Set             as S
 
 import Control.Monad.Trans.Reader
 import Control.Monad.IO.Class (liftIO)
