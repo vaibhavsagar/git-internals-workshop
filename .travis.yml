@@ -21,6 +21,10 @@ install:
 script:
 - stack --no-terminal --skip-ghc-check build
 - stack exec git-internals-workshop-build
+- cd output
+- git checkout master
+- ls -alR
+- cd ..
 
 # after_success:
 # - bash .ci/update_pages.sh
