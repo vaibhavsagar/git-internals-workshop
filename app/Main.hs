@@ -18,7 +18,7 @@ import Duffer.Porcelain
 
 main :: IO ()
 main = do
-    duffer destroyRepo
+    removeDirectoryRecursive "output"
     duffer initRepo
     duffer makeRepo
     return ()
@@ -26,10 +26,6 @@ main = do
 duffer = flip runReaderT "output/.git"
 
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
-
-destroyRepo = do
-    path <- ask
-    liftIO $ removeDirectoryRecursive path
 
 master parent = do
     message           <- liftIO $ B.readFile "content/step0/commit.txt"
@@ -48,15 +44,16 @@ stepN step parents = do
     where stepPath = "content/step" ++ show step
 
 makeRepo = do
-    history <- foldl (>>=) (stepN 1 [])
+    step4 <- foldl (>>=) (stepN 1 [])
         [ stepN 2 . return
         , stepN 3 . return
         , stepN 4 . return
-        , stepN 5 . return
         ]
-    let annotTag = Tag history "commit" "step5" me "Look at me. I am the tag now.\n"
+    let annotTag =
+            Tag step4 "commit" "step4" me "Look at me. I am the tag now.\n"
     writeObject annotTag
-    updateRef "refs/tags/step5" annotTag
+    updateRef "refs/tags/step4" annotTag
+    history <- stepN 5 [step4]
     latest <- master history
     updateRef "refs/heads/master" latest
     return latest
