@@ -21,8 +21,7 @@ install:
 script:
 - stack --no-terminal --skip-ghc-check build
 - stack exec git-internals-workshop-build
-- cd output
-- git checkout master
+- git -C output checkout master
 - ls -alR
 - cd ..
 
