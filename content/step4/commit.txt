@@ -12,4 +12,4 @@ Exercise 2: Inspect the updated `tools/show_object.py`
 
 Like commits, tags are easy to pretty print.
 
-Finally: run `git checkout step5`
+Finally: run `git checkout step5` and `git show`

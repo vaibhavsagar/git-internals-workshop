@@ -1,5 +1,9 @@
 You are in a maze of twisty little objects, all alike.
 
+All the information that constitutes a git repository is stored under `.git`.
+In this workshop, we'll go through some of this information with the aim of
+understanding how git works under the hood.
+
 Exercise 1: run `cat .git/HEAD`
 
 HEAD is a 'symbolic ref' that references the latest commit of the current
@@ -15,4 +19,4 @@ Exercise 3: inspect `tools/resolve_ref.py`
 This script resolves both symbolic and regular git refs and returns the SHA1
 hash of an object.
 
-Finally: run `git checkout step1`
+Finally: run `git checkout step1` and `git show`

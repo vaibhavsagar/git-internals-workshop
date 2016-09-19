@@ -8,7 +8,12 @@ all objects together in files known as 'packfiles'. Some of the objects are
 not stored as full objects but rather deltas that can be used to reconstruct
 the object given a base object. The packfile format is also used to transfer
 objects over the network (hence the messages you see about 'resolving deltas'
-when doing a `git clone` or a `git fetch`)
+when doing a `git clone` or a `git fetch`).
+
+This is why I had you download the repository as a .zip file: if you had
+`git clone`d it instead, you would have a single file containing all your
+objects in the `.git/objects/pack` directory and I would have had to explain
+packfiles much earlier.
 
 Exercise 2: inspect and run `tools/unpack.sh`
 

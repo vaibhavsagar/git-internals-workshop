@@ -38,4 +38,4 @@ it would be simple to `.decode()` the output and get something that looks
 almost exactly like our earlier output but there's a good reason we're not
 doing this which I'll talk about in the next step.
 
-Finally: run `git checkout step2`
+Finally: run `git checkout step2` and `git show`

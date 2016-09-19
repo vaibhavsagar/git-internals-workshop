@@ -24,4 +24,4 @@ takes up less space. This means additional logic is needed to pretty print
 these objects. You can verify this by running `git cat-file tree <first few
 characters>` which will print out the raw representation of the tree.
 
-Finally: run `git checkout step3`
+Finally: run `git checkout step3` and `git show`
