@@ -28,3 +28,4 @@ deploy:
   on:
     repo: vaibhavsagar/git-internals-workshop
     all_branches: true
+    tags: true
