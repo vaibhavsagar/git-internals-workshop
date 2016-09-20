@@ -19,4 +19,8 @@ Exercise 3: inspect `tools/resolve_ref.py`
 This script resolves both symbolic and regular git refs and returns the SHA1
 hash of an object.
 
+Exercise 4: run `python3 tools/resolve_ref.py HEAD`
+
+This should give us the output from Exercise 2.
+
 Finally: run `git checkout step1` and `git show`
