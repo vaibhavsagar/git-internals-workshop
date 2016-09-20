@@ -7,7 +7,8 @@ Exercise 1:
 
 A blob is what `git` calls a stored file.
 
-Exercise 2: Inspect the updated `tools/show_object.py`
+Exercise 2: Inspect the updated `tools/show_object.py` and run `python3
+tools/show_object.py <blob ref>`
 
 Pretty-printing blobs is relatively straightforward.
 

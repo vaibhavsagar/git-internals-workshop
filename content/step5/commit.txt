@@ -1,6 +1,7 @@
 No, just a Zaphod Beeblebrox; didn't you hear I come in six packs?
 
-Exercise 1: run `git repack -a -d` and inspect `.git/objects`.
+Exercise 1: inspect `.git/objects`, run `git repack -a -d` and inspect
+`.git/objects` again.
 
 `git` stores every version of every file and every directory listing separately
 up to a threshold where it decides to save space. It does this by compressing
