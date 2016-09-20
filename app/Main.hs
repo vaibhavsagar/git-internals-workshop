@@ -16,13 +16,13 @@ import Duffer.Porcelain
 
 main :: IO ()
 main = do
-    notExisting <- not <$> doesDirectoryExist "output"
-    unless notExisting $ removeDirectoryRecursive "output"
+    notExisting <- not <$> doesDirectoryExist "workshop"
+    unless notExisting $ removeDirectoryRecursive "workshop"
     duffer initRepo
     duffer makeRepo
     return ()
 
-duffer = flip runReaderT "output/.git"
+duffer = flip runReaderT "workshop/.git"
 
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
 

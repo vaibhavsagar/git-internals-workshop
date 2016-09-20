@@ -21,7 +21,8 @@ A commit consists of:
 4. A committer
 5. A message
 
-Exercise 2: inspect the contents of `tools/show_object.py`
+Exercise 2: inspect the contents of `tools/show_object.py` and the updated
+`tools_resolve_ref.py`
 
 `git` stores its data as zlib-compressed files in the `.git/objects`
 directory as follows:
@@ -30,6 +31,8 @@ directory as follows:
 2. Take the first 2 characters of this hash. This is the directory under
    `.git/objects` where git will store the zlib-compressed content.
 3. The next 38 characters are the filename of the zlib-compressed file.
+
+You can verify this by running `tree .git/objects` if you have `tree`.
 
 Exercise 3: run `python3 tools/show_object.py HEAD`
 

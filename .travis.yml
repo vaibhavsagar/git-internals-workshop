@@ -1,29 +1,30 @@
 language: c
 sudo: false
-
 cache:
-    directories:
-    - $HOME/.stack
-
+  directories:
+  - "$HOME/.stack"
 addons:
-    apt:
-        packages:
-        - libgmp-dev
-
+  apt:
+    packages:
+    - libgmp-dev
 before_install:
 - mkdir -p $HOME/.local/bin
-- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
-
+- travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards
+  --strip-components=1 -C ~/.local/bin '*/stack'
 install:
 - stack setup
-# - stack install pandoc
-
 script:
 - stack --no-terminal --skip-ghc-check build
+after_success:
 - stack exec git-internals-workshop-build
-- git -C output checkout master
-- ls -alR
-- cd ..
-
-# after_success:
-# - bash .ci/update_pages.sh
+- git -C workshop checkout master
+- zip -r git-internals-workshop workshop
+deploy:
+  provider: releases
+  api_key:
+    secure: fZMlzgMPaztj0NlF5HHZ6vcxNEEwQNA8qjxn3BJKYIW5rJisUvv/wg2NA512ZTU3rW3xEMsHwispWdxaw9etwbyKy5O2HFMNaaogjz0Eqs1XJrh1Bootnqs9S4vu37L6Fngz4r1z+if8Ppu8iASafHTdKamEgaScmusyTkzFB3xqRn7O4ULJNw6+tQHgtSklQ2b8letI0PqdJyYKFmrQomS3V91oT1QpMLifxUCwflT20cP0/U93+M6wu/fSVHPKED3tbTle0xNIkTIAPxZrhxVTOzk2uBuUCWRnuEYeNWuSojUgVChaIR81EJtGy/Vfw22/lsoHMSetkueQW7YoRbkYdryeOyrmJ01SnQK4z1sLZ29LscaBmAvEIbUxm5HJUBzlHggAgbYB/a23tnKJPzsKMnae8F2e91dWWu28XzFMgjxezem09YlH+S+gHQSMDd2uGLay/TXIThJRf0VUhAoQEp8k4E1/7nnHgA1rGMUgxR9kW8xvYWav2WN6GN4730IEvbKecQKJF/aruBA0ZphGrzK29SrBXk3bw8XdEC0muTW359ocwQX92Irq9LUfhYqSuQkA0n5qGRtdvM7pd38fYWON+YhJhFsLWZ9pbPbEs223xfKgYIx2Ny6XZYzahO7lkAaS2FE2GYSGP+3Fn22ecPc+o/4HKyEuldxwc5I=
+  skip_cleanup: true
+  file: git-internals-workshop.zip
+  on:
+    repo: vaibhavsagar/git-internals-workshop
+    all_branches: true
