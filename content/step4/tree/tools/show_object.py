@@ -2,6 +2,7 @@
 
 import zlib
 import hashlib
+import binascii
 from sys import argv
 from re import compile
 
@@ -34,11 +35,13 @@ def sha1_to_content(sha1, directory='.git'):
     if object_type == 'tree':
         tree_entry = compile(br'(\d+) (.*?)\x00([\x00-\xff]{20})')
         entries = [
-            '\t'.join((mode.decode().zfill(6), sha1.hex(), name.decode()))
+            '\t'.join(
+                (mode.decode().zfill(6), binascii.hexlify(sha1), name.decode())
+            )
             for (mode, name, sha1) in
             tree_entry.findall(content)
         ]
-        return [header, *entries]
+        return [header] + entries
     elif object_type in ('commit', 'blob', 'tag'):
         return [header, content.decode()]
 
