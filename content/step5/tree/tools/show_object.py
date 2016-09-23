@@ -9,6 +9,10 @@ from re import compile
 from resolve_ref import resolve_ref
 
 
+def hexlify(sha1):
+    return binascii.hexlify(sha1).decode()
+
+
 def sha1_to_path(sha1, directory):
     prefix = sha1[:2]
     suffix = sha1[2:]
@@ -36,7 +40,7 @@ def sha1_to_content(sha1, directory='.git'):
         tree_entry = compile(br'(\d+) (.*?)\x00([\x00-\xff]{20})')
         entries = [
             '\t'.join(
-                (mode.decode().zfill(6), binascii.hexlify(sha1), name.decode())
+                (mode.decode().zfill(6), hexlify(sha1), name.decode())
             )
             for (mode, name, sha1) in
             tree_entry.findall(content)
