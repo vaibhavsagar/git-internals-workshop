@@ -22,7 +22,7 @@ A commit consists of:
 5. A message
 
 Exercise 2: inspect the contents of `tools/show_object.py` and the updated
-`tools_resolve_ref.py`
+`tools/resolve_ref.py`
 
 `git` stores its data as zlib-compressed files in the `.git/objects`
 directory as follows:
