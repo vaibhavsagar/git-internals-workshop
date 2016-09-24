@@ -9,5 +9,5 @@ This is:
 2. Implemented as a scripted `git` repository...
 3. Using my `git` library in Haskell.
 
-To get started, download the latest generated `workshop.zip` from the Releases
-page, unzip it, and run `git show`.
+To get started, download the latest generated `git-internal-workshop.zip` from
+the Releases page, unzip it, and run `git show`.
