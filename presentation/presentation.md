@@ -1,21 +1,21 @@
 % Historical Revisionism
 % Vaibhav Sagar
 
-# Been working on this `git` library
+# Demo
 
-# Wanted to share what I learned
+<script type="text/javascript" src="https://asciinema.org/a/e1xi0mbb1durj1bq61c5walai.js" id="asciicast-e1xi0mbb1durj1bq61c5walai" async></script>
 
-# It would be cool to have a workshop
+# Working on a `git` library
 
-# It would be cool if I made a `git` repository for the workshop
+# Sharing what I learned
 
-# It would be frustrating to manually cherry-pick and rebase
+# Preparing a workshop
 
-# Realised I had just spent the last couple of months writing a `git` library
+# Manually constructing a history
 
-# Wrote code to make my repository
+# Remembering I have a `git` library
 
-# The code worked
+# Writing code to make my repository
 
 # You can write code to make any history
 
