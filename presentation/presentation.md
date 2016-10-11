@@ -53,6 +53,6 @@ links them together as a valid `git` repository!
 
 # Demo
 
-<a href="https://asciinema.org/a/88784" target="_blank"><img src="https://asciinema.org/a/88784.png" height=225 width=400/></a>
+<a href="https://asciinema.org/a/88841" target="_blank"><img src="https://asciinema.org/a/88841.png" /></a>
 
 # You can write code to make any history
