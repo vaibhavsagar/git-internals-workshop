@@ -13,6 +13,7 @@ before_install:
   --strip-components=1 -C ~/.local/bin '*/stack'
 install:
 - stack setup
+- stack install pandoc
 script:
 - stack --no-terminal --skip-ghc-check build
 after_success:
