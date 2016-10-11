@@ -6,7 +6,7 @@ import qualified Data.ByteString      as B
 
 import Control.Monad.Trans.Reader
 import Control.Monad.IO.Class (liftIO)
-import Control.Monad (mapM_, unless)
+import Control.Monad (unless)
 import System.Directory
 import System.FilePath
 
