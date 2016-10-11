@@ -19,6 +19,7 @@ after_success:
 - stack exec git-internals-workshop-build
 - git -C workshop checkout master
 - zip -r git-internals-workshop workshop
+- bash .ci/update_pages.sh
 deploy:
   provider: releases
   api_key:
