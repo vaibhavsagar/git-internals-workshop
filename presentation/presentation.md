@@ -3,7 +3,7 @@
 
 # Demo
 
-<script type="text/javascript" src="https://asciinema.org/a/e1xi0mbb1durj1bq61c5walai.js" id="asciicast-e1xi0mbb1durj1bq61c5walai" async></script>
+<a href="https://asciinema.org/a/88784" target="_blank"><img src="https://asciinema.org/a/88784.png" /></a>
 
 # Working on a `git` library
 
@@ -18,4 +18,3 @@
 # Writing code to make my repository
 
 # You can write code to make any history
-
