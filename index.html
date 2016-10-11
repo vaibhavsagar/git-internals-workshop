@@ -34,21 +34,40 @@
 
 <section id="working-on-a-git-library" class="slide level1">
 <h1>Working on a <code>git</code> library</h1>
+<aside class="notes">
+<p>So I've been at the Recurse Center for the last 8 weeks, mostly working on implementing the conceptual core of <code>git</code> in Haskell as a way of learning both Haskell and <code>git</code>.</p>
+</aside>
 </section>
 <section id="sharing-what-i-learned" class="slide level1">
 <h1>Sharing what I learned</h1>
+<aside class="notes">
+<p>I learned a lot about how repositories are implemented under the hood that I thought it would be useful to know. I prepared a 5 minute presentation that didn't go over well, but I had a lot of success with people one-on-one walking them through a <code>.git</code> folder. I wanted something more scalable and interactive so I decided to prepare a workshop.</p>
+</aside>
 </section>
 <section id="preparing-a-workshop" class="slide level1">
 <h1>Preparing a workshop</h1>
+<aside class="notes">
+<p>I knew I wanted slides/notes as well, sample <code>git</code>-compatible code, and a <code>git</code> repository to play with, so then I thought of putting the slides in the commit messages and having the repo be the workshop</p>
+</aside>
 </section>
 <section id="manually-constructing-a-history" class="slide level1">
 <h1>Manually constructing a history</h1>
+<aside class="notes">
+<p>I thought about the work involved in making this repository: cherry-picking, rebasing, editing. What if I make a mistake somewhere and have to do a lot of tedious manual work all over again? I spun my wheels for a while.</p>
+</aside>
 </section>
 <section id="remembering-i-have-a-git-library" class="slide level1">
 <h1>Remembering I have a <code>git</code> library</h1>
+<aside class="notes">
+<p>Hang on, don't I already have a way to make the history that I want?</p>
+</aside>
 </section>
 <section id="writing-code-to-make-my-repository" class="slide level1">
 <h1>Writing code to make my repository</h1>
+<p>https://github.com/vaibhavsagar/git-internals-workshop</p>
+<aside class="notes">
+<p>So I wrote some code that takes the directories I want in each revision and links them together as a valid <code>git</code> repository!</p>
+</aside>
 </section>
 <section id="demo" class="slide level1">
 <h1>Demo</h1>
