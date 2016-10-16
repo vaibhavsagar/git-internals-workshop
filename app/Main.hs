@@ -24,6 +24,7 @@ main = do
 
 duffer = flip runReaderT "workshop/.git"
 
+me :: PersonTime
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
 
 master parent = do
