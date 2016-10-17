@@ -2,7 +2,7 @@
 
 module Main where
 
-import qualified Data.ByteString      as B
+import qualified Data.ByteString as B
 
 import Control.Monad.Trans.Reader
 import Control.Monad.IO.Class (liftIO)
@@ -22,27 +22,31 @@ main = do
     duffer makeRepo
     return ()
 
+duffer :: ReaderT Repo m a -> m a
 duffer = flip runReaderT "workshop/.git"
 
 me :: PersonTime
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
 
+master :: Ref -> WithRepo GitObject
 master parent = do
-    message           <- liftIO $ B.readFile "content/step0/commit.txt"
+    msg               <- liftIO $ B.readFile "content/step0/commit.txt"
     rootTreeHash      <- writeTree $ "content" </> "step0" </> "tree"
-    let commitObject  =  Commit rootTreeHash [parent] me me message
+    let commitObject  =  Commit rootTreeHash [parent] me me msg
     writeObject commitObject
     return commitObject
 
+stepN :: Int -> [Ref] -> WithRepo Ref
 stepN step parents = do
-    message           <- liftIO $ B.readFile $ stepPath </> "commit.txt"
+    msg               <- liftIO $ B.readFile $ stepPath </> "commit.txt"
     rootTreeHash      <- writeTree           $ stepPath </> "tree"
-    let commitObject  =  Commit rootTreeHash parents me me message
+    let commitObject  =  Commit rootTreeHash parents me me msg
     commitHash        <- writeObject commitObject
     updateRef ("refs/tags/step" ++ show step) commitObject
     return commitHash
     where stepPath = "content/step" ++ show step
 
+makeRepo :: WithRepo GitObject
 makeRepo = do
     step4 <- foldl (>>=) (stepN 1 [])
         [ stepN 2 . return
