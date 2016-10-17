@@ -12,7 +12,7 @@ import System.FilePath
 
 import Duffer.Loose
 import Duffer.Loose.Objects
-import Duffer.Porcelain
+import Duffer.Plumbing
 
 main :: IO ()
 main = do
