@@ -13,6 +13,8 @@ import System.FilePath
 import Duffer.Loose
 import Duffer.Loose.Objects
 import Duffer.Plumbing
+import Duffer.WithRepo
+import Duffer.Unified
 
 main :: IO ()
 main = do
