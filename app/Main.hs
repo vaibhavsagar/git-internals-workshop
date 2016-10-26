@@ -18,7 +18,7 @@ import Duffer.Unified
 
 main :: IO ()
 main = do
-    notExisting <- not <$> doesDirectoryExist "workshop"
+    notExisting <- not <$> doesDirectoryExist     "workshop"
     unless notExisting $ removeDirectoryRecursive "workshop"
     duffer initRepo
     duffer makeRepo
