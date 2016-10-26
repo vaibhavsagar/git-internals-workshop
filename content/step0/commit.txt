@@ -23,4 +23,4 @@ Exercise 4: run `python3 tools/resolve_ref.py HEAD`
 
 This should give us the output from Exercise 2.
 
-Finally: run `git checkout step1` and `git show`
+Finally: run `git checkout step1` and `git cat-file -p HEAD`

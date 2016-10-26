@@ -12,4 +12,4 @@ tools/show_object.py <blob ref>`
 
 Pretty-printing blobs is relatively straightforward.
 
-Finally: run `git checkout step4` and `git show`
+Finally: run `git checkout step4` and `git cat-file -p HEAD`

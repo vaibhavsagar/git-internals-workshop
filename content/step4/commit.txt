@@ -13,4 +13,4 @@ tools/show_object.py step4`
 
 Like commits, tags are easy to pretty print.
 
-Finally: run `git checkout step5` and `git show`
+Finally: run `git checkout step5` and `git cat-file -p HEAD`
