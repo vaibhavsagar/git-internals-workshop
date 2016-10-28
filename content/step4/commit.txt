@@ -5,7 +5,7 @@ Exercise 1: run `ls .git/refs/tags`. Try `git cat-file -p <tag>` for each tag.
 `git` has two types of tags: lightweight tags and annotated tags. Lightweight
 tags resemble one of the files in `.git/ref/heads/` very closely: just a SHA1
 hash referencing an object (blob/tree/commit/tag). Annotated tags are more like
-a commit in that they have some fields (object, type, tag tagger) and an
+a commit in that they have some fields (object, type, name, tagger) and an
 annotation.
 
 Exercise 2: Inspect the updated `tools/show_object.py` and run `python3
