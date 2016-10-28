@@ -44,9 +44,9 @@ stepN step parents = do
     rootTreeHash      <- writeTree           $ stepPath </> "tree"
     let commitObject  =  Commit rootTreeHash parents me me msg
     commitHash        <- writeObject commitObject
-    updateRef ("refs/tags/step" ++ show step) commitObject
+    updateRef ("refs/tags/step" </> show step) commitObject
     return commitHash
-    where stepPath = "content/step" ++ show step
+    where stepPath = "content/step" </> show step
 
 makeRepo :: WithRepo GitObject
 makeRepo = do
