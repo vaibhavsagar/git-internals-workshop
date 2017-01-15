@@ -2,6 +2,7 @@ Git Internals Workshop
 ======================
 
 [![Build Status](https://travis-ci.org/vaibhavsagar/git-internals-workshop.svg?branch=master)](https://travis-ci.org/vaibhavsagar/git-internals-workshop)
+[![made at Recurse Center](https://cdn.rawgit.com/heatherbooker/made_at_rc/master/made_at_RC.svg)](https://www.recurse.com)
 
 This is:
 
