@@ -38,7 +38,7 @@ resolver: lts-6.30
 packages:
 - '.'
 - location:
-    git: git@github.com:vaibhavsagar/duffer
+    git: https://github.com/vaibhavsagar/duffer
     commit: 8996002ee6a94cd9ac31b0c6bdcb8e59be835984
   extra-dep: true
 # Dependency packages to be pulled from upstream that are not in the resolver
