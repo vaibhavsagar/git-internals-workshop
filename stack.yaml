@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-6.17
+resolver: lts-6.30
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -37,7 +37,10 @@ resolver: lts-6.17
 # will not be run. This is useful for tweaking upstream packages.
 packages:
 - '.'
-- duffer
+- location:
+    git: git@github.com:vaibhavsagar/duffer
+    commit: 8996002ee6a94cd9ac31b0c6bdcb8e59be835984
+  extra-dep: true
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
 extra-deps:
