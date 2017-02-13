@@ -21,8 +21,8 @@ main = do
     duffer makeRepo
     return ()
 
-duffer :: ReaderT Repo m a -> m a
-duffer = flip runReaderT "workshop/.git"
+duffer :: WithRepo a -> IO a
+duffer = withRepo "workshop/.git"
 
 me :: PersonTime
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
