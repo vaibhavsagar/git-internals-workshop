@@ -4,13 +4,10 @@ module Main where
 
 import qualified Data.ByteString as B
 
-import Control.Monad.Trans.Reader
-import Control.Monad.IO.Class (liftIO)
 import Control.Monad (unless)
 import System.Directory
 import System.FilePath
 
-import Duffer.Loose
 import Duffer.Loose.Objects
 import Duffer.Plumbing
 import Duffer.WithRepo
