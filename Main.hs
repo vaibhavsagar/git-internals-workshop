@@ -15,17 +15,16 @@ import Duffer.Unified
 
 main :: IO ()
 main = do
-    notExisting <- not <$> doesDirectoryExist     "workshop"
-    unless notExisting $ removeDirectoryRecursive "workshop"
-    duffer initRepo
-    duffer makeRepo
+    doesn'tExist <- not <$> doesDirectoryExist     "workshop"
+    unless doesn'tExist $ removeDirectoryRecursive "workshop"
+    duffer (initRepo >> makeRepo)
     return ()
 
 duffer :: WithRepo a -> IO a
 duffer = withRepo "workshop/.git"
 
 me :: PersonTime
-me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0000000000" "+0000"
+me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0" "+0000"
 
 master :: Ref -> WithRepo GitObject
 master parent = do
@@ -37,13 +36,12 @@ master parent = do
 
 stepN :: Int -> [Ref] -> WithRepo Ref
 stepN step parents = do
-    msg               <- liftIO $ B.readFile $ stepPath </> "commit.txt"
-    rootTreeHash      <- writeTree           $ stepPath </> "tree"
-    let commitObject  =  Commit rootTreeHash parents me me msg
-    commitHash        <- writeObject commitObject
-    updateRef ("refs/tags/step" </> show step) commitObject
-    return commitHash
-    where stepPath = "content/step" </> show step
+    msg              <- liftIO $ B.readFile $ stepPath </> "commit.txt"
+    rootTreeHash     <- writeTree           $ stepPath </> "tree"
+    let commitObject =  Commit rootTreeHash parents me me msg
+    updateRef ("refs/tags/step" ++ show step) commitObject
+    writeObject commitObject
+    where stepPath = "content/step" ++ show step
 
 makeRepo :: WithRepo GitObject
 makeRepo = do
