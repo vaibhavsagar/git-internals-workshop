@@ -30,7 +30,7 @@ master :: Ref -> WithRepo GitObject
 master parent = do
     msg               <- liftIO $ B.readFile "content/step0/commit.txt"
     rootTreeHash      <- writeTree $ "content" </> "step0" </> "tree"
-    let commitObject  =  Commit rootTreeHash [parent] me me msg
+    let commitObject  =  Commit rootTreeHash parents me me Nothing msg
     writeObject commitObject
     return commitObject
 
@@ -38,7 +38,7 @@ stepN :: Int -> [Ref] -> WithRepo Ref
 stepN step parents = do
     msg              <- liftIO $ B.readFile $ stepPath </> "commit.txt"
     rootTreeHash     <- writeTree           $ stepPath </> "tree"
-    let commitObject =  Commit rootTreeHash parents me me msg
+    let commitObject =  Commit rootTreeHash parents me me Nothing msg
     updateRef ("refs/tags/step" ++ show step) commitObject
     writeObject commitObject
     where stepPath = "content/step" ++ show step
