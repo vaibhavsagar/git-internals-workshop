@@ -17,7 +17,7 @@ install:
 script:
 - stack --no-terminal --skip-ghc-check build
 after_success:
-- stack exec git-internals-workshop-build
+- stack exec build-workshop
 - git -C workshop checkout master
 - zip -r git-internals-workshop workshop
 - bash .ci/update_pages.sh
