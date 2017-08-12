@@ -21,8 +21,9 @@ A commit consists of:
 4. A committer
 5. A message
 
-Exercise 2: inspect the contents of `tools/show_object.py` and the updated
-`tools/resolve_ref.py`
+Exercise 2: inspect the contents of `tools/show_object.py` or
+`tools/ShowObject.hs` and the updated `tools/resolve_ref.py` or
+`tools/ResolveRef.hs`
 
 `git` stores its data as zlib-compressed files in the `.git/objects`
 directory as follows:
@@ -34,7 +35,8 @@ directory as follows:
 
 You can verify this by running `tree .git/objects` if you have `tree`.
 
-Exercise 3: run `python3 tools/show_object.py HEAD`
+Exercise 3: run `python3 tools/show_object.py HEAD` or `stack
+tools/ShowObject.hs HEAD`
 
 This should be recognisably similar to the output of Exercise 1. With a commit
 it would be simple to `.decode()` the output and get something that looks

@@ -14,12 +14,12 @@ Exercise 2: run `cat .git/refs/heads/master`
 This is what HEAD currently points to. It stores an object reference as a SHA1
 hash, which is what `git` uses to keep track of content.
 
-Exercise 3: inspect `tools/resolve_ref.py`
+Exercise 3: inspect `tools/resolve_ref.py` or `tools/ResolveRef.hs`
 
 This script resolves both symbolic and regular git refs and returns the SHA1
 hash of an object.
 
-Exercise 4: run `python3 tools/resolve_ref.py HEAD`
+Exercise 4: run `python3 tools/resolve_ref.py HEAD` or `stack tools/ResolveRef.hs HEAD`
 
 This should give us the output from Exercise 2.
 
