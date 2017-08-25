@@ -4,7 +4,7 @@ module Main where
 
 import qualified Data.ByteString as B
 
-import Control.Monad (unless)
+import Control.Monad (unless, foldM, void)
 import System.Directory
 import System.FilePath
 
@@ -17,44 +17,36 @@ main :: IO ()
 main = do
     doesn'tExist <- not <$> doesDirectoryExist     "workshop"
     unless doesn'tExist $ removeDirectoryRecursive "workshop"
-    duffer (initRepo >> makeRepo)
-    return ()
-
-duffer :: WithRepo a -> IO a
-duffer = withRepo "workshop/.git"
+    void $ withRepo "workshop/.git" (initRepo >> makeRepo)
 
 me :: PersonTime
 me = PersonTime "Vaibhav Sagar" "me@vaibhavsagar.com" "0" "+0000"
 
-master :: Ref -> WithRepo GitObject
-master parent = do
+master :: [Ref] -> WithRepo GitObject
+master parents = do
     msg               <- liftIO $ B.readFile "content/step0/commit.txt"
     rootTreeHash      <- writeTree $ "content" </> "step0" </> "tree"
-    let commitObject  =  Commit rootTreeHash [parent] me me Nothing msg
+    let commitObject  =  Commit rootTreeHash parents me me Nothing msg
     writeObject commitObject
     return commitObject
 
-stepN :: Int -> [Ref] -> WithRepo Ref
-stepN step parents = do
+stepN :: [Ref] -> Int -> WithRepo [Ref]
+stepN parents step = do
     msg              <- liftIO $ B.readFile $ stepPath </> "commit.txt"
     rootTreeHash     <- writeTree           $ stepPath </> "tree"
     let commitObject =  Commit rootTreeHash parents me me Nothing msg
     updateRef ("refs/tags/step" ++ show step) commitObject
-    writeObject commitObject
+    return <$> writeObject commitObject
     where stepPath = "content/step" ++ show step
 
 makeRepo :: WithRepo GitObject
 makeRepo = do
-    step4 <- foldl (>>=) (stepN 1 [])
-        [ stepN 2 . return
-        , stepN 3 . return
-        , stepN 4 . return
-        ]
-    let annotTag =
-            Tag step4 "commit" "step4" me "Look at me. I am the tag now.\n"
+    steps   <- foldM stepN [] [1..4]
+    let step4    = head steps
+    let annotTag = Tag step4 "commit" "step4" me "Look at me. I am the tag now.\n"
     writeObject annotTag
     updateRef "refs/tags/step4" annotTag
-    history <- stepN 5 [step4]
-    latest <- master history
+    history <- stepN steps 5
+    latest  <- master history
     updateRef "refs/heads/master" latest
     return latest
