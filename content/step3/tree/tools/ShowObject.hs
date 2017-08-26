@@ -10,6 +10,7 @@ import           Control.Monad
 import           Data.Attoparsec.ByteString.Char8 as A
 import           Data.ByteString                       (ByteString)
 import qualified Data.ByteString                  as B
+import           Data.ByteString.Base16                (encode)
 import qualified Data.ByteString.Char8            as C
 import           Data.ByteString.Lazy                  (fromStrict, toStrict)
 import           Data.ByteString.UTF8                  (fromString, toString)
@@ -64,12 +65,25 @@ hash = fromString . showDigest . sha1 . fromStrict
 decompress :: ByteString -> ByteString
 decompress = toStrict . Z.decompress . fromStrict
 
+parseTreeEntry :: Parser [ByteString]
+parseTreeEntry = do
+    perms <- fromString <$> A.many' A.digit
+    A.space
+    name  <- A.takeWhile (/= '\NUL')
+    A.char '\NUL'
+    ref   <- encode <$> A.take 20
+    return [perms, name, ref]
+
 parsedObject :: ByteString -> [ByteString]
 parsedObject raw = let
     (headerLen, rest) = C.break (=='\NUL') raw
     content           = B.tail rest
     objectType        = fst $ C.break (==' ') headerLen
     in case objectType of
+        "tree" -> let
+                parser = A.many' parseTreeEntry
+                parsed = either error id $ A.parseOnly parser content
+            in map (B.intercalate "\t") parsed
         _ -> [content]
 
 main :: IO ()
