@@ -65,14 +65,14 @@ hash = fromString . showDigest . sha1 . fromStrict
 decompress :: ByteString -> ByteString
 decompress = toStrict . Z.decompress . fromStrict
 
-parseTreeEntry :: Parser [ByteString]
+parseTreeEntry :: Parser (ByteString, ByteString, ByteString)
 parseTreeEntry = do
     perms <- fromString <$> A.many' A.digit
     A.space
     name  <- A.takeWhile (/= '\NUL')
     A.char '\NUL'
     ref   <- encode <$> A.take 20
-    return [perms, name, ref]
+    return (perms, name, ref)
 
 parsedObject :: ByteString -> [ByteString]
 parsedObject raw = let
@@ -83,7 +83,10 @@ parsedObject raw = let
         "tree" -> let
                 parser = A.many' parseTreeEntry
                 parsed = either error id $ A.parseOnly parser content
-            in map (B.intercalate "\t") parsed
+                fmt (p, n, r) = case p of
+                    "100644" -> B.concat [p, " blob ", r, "\t", n]
+                    "40000"  -> B.concat ["040000", " tree ", r, "\t", n]
+            in map fmt parsed
         _ -> [content]
 
 main :: IO ()
