@@ -87,8 +87,7 @@ parsedObject raw = let
                     "100644" -> B.concat [p, " blob ", r, "\t", n]
                     "40000"  -> B.concat ["040000", " tree ", r, "\t", n]
             in map fmt parsed
-        o | o `elem` ["commit", "blob"] -> [content]
-        _ -> error "not yet!"
+        _ -> [content]
 
 main :: IO ()
 main = do
