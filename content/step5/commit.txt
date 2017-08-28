@@ -19,8 +19,8 @@ packfiles much earlier.
 Exercise 2: inspect and run `tools/unpack.sh`
 
 `git` can convert between the two representations at will. Implementing this
-conversion in Python is far beyond the scope of this workshop and I won't try
-:)
+conversion in Python or Haskell is far beyond the scope of this workshop and I
+won't try :).
 
 Finally:
 

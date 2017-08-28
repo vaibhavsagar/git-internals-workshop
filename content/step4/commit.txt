@@ -8,8 +8,9 @@ hash referencing an object (blob/tree/commit/tag). Annotated tags are more like
 a commit in that they have some fields (object, type, name, tagger) and an
 annotation.
 
-Exercise 2: Inspect the updated `tools/show_object.py` and run `python3
-tools/show_object.py step4`
+Exercise 2: Inspect the updated `tools/show_object.py` `tools/ShowObject.hs`
+and run `python3 tools/show_object.py step4` or `stack tools/ShowObject.hs
+step4`.
 
 Like commits, tags are easy to pretty print.
 
