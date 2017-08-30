@@ -16,7 +16,7 @@ stored in `git`, and otherwise different files with the same content result in
 the same object being stored under `.git/objects`. This is why git has its own
 `git mv`.
 
-Exercise 2: Inspect the updated `tools/show_object.py`
+Exercise 2: Inspect the updated `tools/show_object.py` or `tools/ShowObject.hs`
 
 A SHA1 hash can be represented either as a 40-character hexadecimal sequence or
 a 20-byte sequence. When storing tree objects, `git` uses the latter as this
