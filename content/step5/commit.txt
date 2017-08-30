@@ -20,7 +20,8 @@ Exercise 2: inspect and run `tools/unpack.sh`
 
 `git` can convert between the two representations at will. Implementing this
 conversion in Python or Haskell is far beyond the scope of this workshop and I
-won't try :).
+won't try :). If you'd like to learn more, my favourite resource is
+https://codewords.recurse.com/issues/three/unpacking-git-packfiles.
 
 Finally:
 
