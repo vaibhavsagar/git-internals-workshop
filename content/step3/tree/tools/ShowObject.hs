@@ -1,5 +1,5 @@
 #!/usr/bin/env stack
--- stack --resolver lts-9.0 script
+-- stack --resolver lts-9.2 script
 
 {-# LANGUAGE OverloadedStrings #-}
 
