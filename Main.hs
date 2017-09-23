@@ -41,12 +41,11 @@ stepN parents step = do
 
 makeRepo :: WithRepo GitObject
 makeRepo = do
-    steps   <- foldM stepN [] [1..4]
+    steps  <- foldM stepN [] [1..4]
     let step4    = head steps
     let annotTag = Tag step4 "commit" "step4" me "Look at me. I am the tag now.\n"
     writeObject annotTag
     updateRef "refs/tags/step4" annotTag
-    history <- stepN steps 5
-    latest  <- master history
+    latest <- master =<< stepN steps 5
     updateRef "refs/heads/master" latest
     return latest
